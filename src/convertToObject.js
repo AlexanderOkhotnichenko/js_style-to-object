@@ -8,17 +8,15 @@
 function convertToObject(sourceString) {
   const source = sourceString;
   const string = source.split(';').filter((item) => item.trim() !== '');
-  const array = [];
+  const declarat = [];
 
-  string.forEach((item) => array.push(item.split(':')));
+  string.forEach((item) => declarat.push(item.split(':')));
 
-  const arrayCorrected = array.map((item) => item.map((el) => el.trim()));
+  const arrayCorrected = declarat.map((item) => item.map((el) => el.trim()));
 
-  const object = {};
+  const styleObject = Object.fromEntries(arrayCorrected);
 
-  arrayCorrected.map(([key, value]) => (object[key] = value));
-
-  return object;
+  return styleObject;
 }
 
 module.exports = convertToObject;
